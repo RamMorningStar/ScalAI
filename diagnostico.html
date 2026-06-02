@@ -1,0 +1,433 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Evaluación - Scal IA</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+        /* Estilos específicos para las tarjetas de preguntas */
+        .cuestionario-grid {
+            display: grid;
+            gap: 2rem;
+            margin: 4rem 0;
+        }
+
+        .pregunta-card {
+            background-color: #f9f9f9;
+            padding: 2.5rem;
+            border-radius: 1rem;
+            border-left: 6px solid var(--negro);
+            transition: transform 0.2s;
+        }
+
+        .pregunta-card:hover {
+            transform: translateX(5px);
+        }
+
+        .pregunta-titulo {
+            font-weight: 700;
+            margin-bottom: 2rem;
+            display: block;
+            font-size: 1.8rem;
+            line-height: 1.4;
+            color: var(--negro);
+        }
+
+        .opciones-group {
+            display: flex;
+            flex-direction: column;
+            gap: 1.2rem;
+        }
+
+        .opcion-item {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            cursor: pointer;
+            font-size: 1.6rem;
+        }
+
+        .opcion-item input[type="radio"] {
+            width: 2rem;
+            height: 2rem;
+            accent-color: var(--negro);
+        }
+
+        .seccion-datos {
+            background-color: #f9f9f9;
+            padding: 4rem;
+            border-radius: 1rem;
+            margin: 4rem 0;
+            border: 1px solid var(--gris);
+        }
+
+        .instrucciones {
+            text-align: center;
+            margin-bottom: 4rem;
+            color: #555;
+            max-width: 800px;
+            margin-left: auto;
+            margin-right: auto;
+            font-size: 1.8rem;
+            line-height: 1.6;
+        }
+
+        .info-recibir {
+            background-color: #e8f4fd;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin-bottom: 4rem;
+            border: 1px dashed #784D3C;
+        }
+
+        .checkbox-aviso {
+            display: flex;
+            align-items: flex-start;
+            gap: 1rem;
+            margin: 3rem 0;
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        .checkbox-aviso input[type="checkbox"] {
+            width: 1.8rem;
+            height: 1.8rem;
+            margin-top: 0.2rem;
+            accent-color: var(--negro);
+        }
+
+        .campo {
+            display: flex;
+            flex-direction: column;
+            gap: 0.8rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .campo__label {
+            font-family: var(--fuenteHeading);
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: var(--negro);
+        }
+
+        .campo__field {
+            width: 100%;
+            padding: 1.2rem 1.5rem;
+            border: 1px solid var(--gris);
+            border-radius: 0.5rem;
+            font-size: 1.6rem;
+            font-family: var(--fuenteParrafos);
+            background-color: var(--blanco);
+            transition: border-color 0.2s, box-shadow 0.2s;
+        }
+
+        .campo__field:focus {
+            outline: none;
+            border-color: var(--primario);
+            box-shadow: 0 0 0 3px rgba(120, 77, 60, 0.15);
+        }
+
+        /* Estilos para mensajes de Formspree */
+        .msg-exito {
+            background-color: #d4edda;
+            color: #155724;
+            padding: 2rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+            font-size: 1.8rem;
+            text-align: center;
+            border: 1px solid #c3e6cb;
+        }
+
+        .msg-error {
+            background-color: #f8d7da;
+            color: #721c24;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            margin: 2rem 0;
+            font-size: 1.6rem;
+            text-align: center;
+            border: 1px solid #f5c6cb;
+        }
+
+        .error-campo {
+            color: #dc3545;
+            font-size: 1.4rem;
+            margin-top: 0.5rem;
+            display: block;
+        }
+
+        @media (min-width: 768px) {
+            .campo {
+                flex-direction: row;
+                align-items: center;
+                gap: 0;
+            }
+            .campo__label {
+                flex: 0 0 20rem;
+                text-align: right;
+                padding-right: 2.5rem;
+            }
+            .campo__field {
+                flex: 1;
+            }
+            .centrar-boton-contenedor {
+                display: flex;
+                justify-content: center;
+                margin-top: 3rem;
+            }
+            .error-campo {
+                padding-left: 20rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <header class="header">
+        <div class="contenedor">
+            <div class="barra">
+                <a class="logo" href="index.html">
+                    <h1 class="logo__nombre no-margin centrar-texto">Scal <span class="logo__bold">IA</span></h1>
+                </a>
+
+               <nav class="navegacion">
+                    <a href="nosotros.html" class="navegacion__enlace">Blog</a>
+                    <a href="cursos.html" class="navegacion__enlace">Metodología</a>
+                    <a href="entrada.html" class="navegacion__enlace">Nuestros Servicios</a>
+                    <a href="contacto.html" class="navegacion__enlace">Contacto</a>
+                    <a href="diagnostico.html" class="navegacion__enlace">Diagnóstico</a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="header__texto">
+            <h2 class="no-margin">Evaluación de Madurez Operativa</h2>
+            <p class="no-margin">El secreto detrás del control y el crecimiento sostenible</p>
+        </div>
+    </header>
+
+    <main class="contenedor">
+        <h3 class="centrar-texto" style="margin-top: 5rem;">Cuestionario de Diagnóstico</h3>
+        <p class="instrucciones">Responde este breve cuestionario para conocer el nivel de madurez de tu organización. Al finalizar, déjanos tus datos y te enviaremos un informe con hallazgos y recomendaciones personalizadas.</p>
+
+        <div class="msg-exito" data-fs-success style="display: none;">
+            <strong>¡Muchas gracias!</strong> Tus respuestas han sido registradas. En breve recibirás tu informe de diagnóstico en tu correo electrónico.
+        </div>
+        <div class="msg-error" data-fs-error style="display: none;"></div>
+
+        <form class="formulario" id="cuestionario-evaluacion">
+            
+            <div class="seccion-datos">
+                <h3 class="centrar-texto" style="margin-bottom: 2rem;">Déjanos tus datos para recibir tu informe</h3>
+                
+                <div class="info-recibir">
+                    <strong>¿Qué recibirás?</strong>
+                    <p style="font-size: 1.6rem; margin-top: 0.5rem; line-height: 1.5;">Un diagnóstico general de tu nivel de desarrollo, principales áreas de oportunidad y recomendaciones prácticas para fortalecer tu sistema de gestión.</p>
+                </div>
+
+                <div class="campo">
+                    <label class="campo__label">Nombre completo*</label>
+                    <input class="campo__field" type="text" name="1. Nombre completo" required placeholder="Ej. Juan Pérez" data-fs-field>
+                    <span class="error-campo" data-fs-error="1. Nombre completo"></span>
+                </div>
+                <div class="campo">
+                    <label class="campo__label">Empresa*</label>
+                    <input class="campo__field" type="text" name="2. Empresa" required placeholder="Nombre de tu organización" data-fs-field>
+                    <span class="error-campo" data-fs-error="2. Empresa"></span>
+                </div>
+                <div class="campo">
+                    <label class="campo__label">Puesto / Cargo</label>
+                    <input class="campo__field" type="text" name="3. Puesto / Cargo" placeholder="Ej. Director de Operaciones" data-fs-field>
+                    <span class="error-campo" data-fs-error="3. Puesto / Cargo"></span>
+                </div>
+                <div class="campo">
+                    <label class="campo__label">Teléfono*</label>
+                    <input class="campo__field" type="tel" name="4. Teléfono" required placeholder="Ej. 5512345678" data-fs-field>
+                    <span class="error-campo" data-fs-error="4. Teléfono"></span>
+                </div>
+                <div class="campo">
+                    <label class="campo__label">Correo electrónico*</label>
+                    <input class="campo__field" type="email" name="email" required placeholder="correo@empresa.com" data-fs-field>
+                    <span class="error-campo" data-fs-error="email"></span>
+                </div>
+
+                <div class="campo">
+                    <div class="campo__label" aria-hidden="true"></div>
+                    <label class="checkbox-aviso">
+                        <input type="checkbox" name="Aviso de privacidad" value="Aceptado" required> 
+                        <span>Acepto el aviso de privacidad y el uso de mis datos para recibir mi evaluación y ser contactado.</span>
+                    </label>
+                </div>
+            </div>
+
+            <div class="cuestionario-grid">
+                
+                <div class="pregunta-card">
+                    <span class="pregunta-titulo">1. ¿Tu empresa cuenta con un sistema de gestión formalmente definido (calidad, riesgos, seguridad, etc.)?*</span>
+                    <div class="opciones-group">
+                        <label class="opcion-item"><input type="radio" name="Pregunta 01: ¿Tu empresa cuenta con un sistema de gestión formalmente definido (calidad, riesgos, seguridad, etc.)?" value="Sí, completamente implementado" required> Sí, completamente implementado</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 01: ¿Tu empresa cuenta con un sistema de gestión formalmente definido (calidad, riesgos, seguridad, etc.)?" value="Parcialmente implementado"> Parcialmente implementado</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 01: ¿Tu empresa cuenta con un sistema de gestión formalmente definido (calidad, riesgos, seguridad, etc.)?" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="pregunta-card">
+                    <span class="pregunta-titulo">2. ¿Existen políticas y objetivos documentados y comunicados al personal?*</span>
+                    <div class="opciones-group">
+                        <label class="opcion-item"><input type="radio" name="Pregunta 02: ¿Existen políticas y objetivos documentados y comunicados al personal?" value="Sí, claros y actualizados" required> Sí, claros y actualizados</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 02: ¿Existen políticas y objetivos documentados y comunicados al personal?" value="Parcialmente"> Parcialmente</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 02: ¿Existen políticas y objetivos documentados y comunicados al personal?" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="pregunta-card">
+                    <span class="pregunta-titulo">3. ¿Se identifican y documentan los procesos clave de la organización?*</span>
+                    <div class="opciones-group">
+                        <label class="opcion-item"><input type="radio" name="Pregunta 03: ¿Se identifican y documentan los procesos clave de la organización?" value="Sí, todos" required> Sí, todos</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 03: ¿Se identifican y documentan los procesos clave de la organización?" value="Algunos"> Algunos</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 03: ¿Se identifican y documentan los procesos clave de la organización?" value="Ninguno"> Ninguno</label>
+                    </div>
+                </div>
+
+                <div class="pregunta-card">
+                    <span class="pregunta-titulo">4. ¿Se han identificado y evaluado los riesgos del negocio de manera formal?*</span>
+                    <div class="opciones-group">
+                        <label class="opcion-item"><input type="radio" name="Pregunta 04: ¿Se han identificado y evaluado los riesgos del negocio de manera formal?" value="Sí, de forma periódica" required> Sí, de forma periódica</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 04: ¿Se han identificado y evaluado los riesgos del negocio de manera formal?" value="Solo una vez o parcialmente"> Solo una vez o parcialmente</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 04: ¿Se han identificado y evaluado los riesgos del negocio de manera formal?" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="pregunta-card">
+                    <span class="pregunta-titulo">5. ¿Se cuenta con controles definidos para mitigar riesgos?*</span>
+                    <div class="opciones-group">
+                        <label class="opcion-item"><input type="radio" name="Pregunta 05: ¿Se cuenta con controles definidos para mitigar riesgos?" value="Sí, documentados y operando" required> Sí, documentados y operando</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 05: ¿Se cuenta con controles definidos para mitigar riesgos?" value="Parcialmente"> Parcialmente</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 05: ¿Se cuenta con controles definidos para mitigar riesgos?" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="pregunta-card">
+                    <span class="pregunta-titulo">6. ¿Se realizan auditorías internas de manera periódica?*</span>
+                    <div class="opciones-group">
+                        <label class="opcion-item"><input type="radio" name="Pregunta 06: ¿Se realizan auditorías internas de manera periódica?" value="Sí, con seguimiento" required> Sí, con seguimiento</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 06: ¿Se realizan auditorías internas de manera periódica?" value="Ocasionalmente"> Ocasionalmente</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 06: ¿Se realizan auditorías internas de manera periódica?" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="pregunta-card">
+                    <span class="pregunta-titulo">7. ¿Se da seguimiento a indicadores de desempeño (KPIs)?*</span>
+                    <div class="opciones-group">
+                        <label class="opcion-item"><input type="radio" name="Pregunta 07: ¿Se da seguimiento a indicadores de desempeño (KPIs)?" value="Sí, regularmente" required> Sí, regularmente</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 07: ¿Se da seguimiento a indicadores de desempeño (KPIs)?" value="De forma limitada"> De forma limitada</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 07: ¿Se da seguimiento a indicadores de desempeño (KPIs)?" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="pregunta-card">
+                    <span class="pregunta-titulo">8. ¿Existe un proceso formal para la mejora continua?*</span>
+                    <div class="opciones-group">
+                        <label class="opcion-item"><input type="radio" name="Pregunta 08: ¿Existe un proceso formal para la mejora continua?" value="Sí, estructurado" required> Sí, estructurado</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 08: ¿Existe un proceso formal para la mejora continua?" value="Parcialmente"> Parcialmente</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 08: ¿Existe un proceso formal para la mejora continua?" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="pregunta-card">
+                    <span class="pregunta-titulo">9. ¿El personal recibe capacitación relacionada con sus funciones y el sistema de gestión?*</span>
+                    <div class="opciones-group">
+                        <label class="opcion-item"><input type="radio" name="Pregunta 09: ¿El personal recibe capacitación relacionada con sus funciones y el sistema de gestión?" value="Sí, continua" required> Sí, continua</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 09: ¿El personal recibe capacitación relacionada con sus funciones y el sistema de gestión?" value="Ocasional"> Ocasional</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 09: ¿El personal recibe capacitación relacionada con sus funciones y el sistema de gestión?" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="pregunta-card">
+                    <span class="pregunta-titulo">10. ¿Se gestionan adecuadamente los documentos y registros?*</span>
+                    <div class="opciones-group">
+                        <label class="opcion-item"><input type="radio" name="Pregunta 10: ¿Se gestionan adecuadamente los documentos y registros?" value="Sí, con control formal" required> Sí, con control formal</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 10: ¿Se gestionan adecuadamente los documentos y registros?" value="Parcialmente"> Parcialmente</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 10: ¿Se gestionan adecuadamente los documentos y registros?" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="pregunta-card">
+                    <span class="pregunta-titulo">11. ¿Se evalúa el cumplimiento legal y normativo aplicable?*</span>
+                    <div class="opciones-group">
+                        <label class="opcion-item"><input type="radio" name="Pregunta 11: ¿Se evalúa el cumplimiento legal y normativo aplicable?" value="Sí, periódicamente" required> Sí, periódicamente</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 11: ¿Se evalúa el cumplimiento legal y normativo aplicable?" value="De forma limitada"> De forma limitada</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 11: ¿Se evalúa el cumplimiento legal y normativo aplicable?" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="pregunta-card">
+                    <span class="pregunta-titulo">12. ¿Se gestionan proveedores bajo criterios definidos?*</span>
+                    <div class="opciones-group">
+                        <label class="opcion-item"><input type="radio" name="Pregunta 12: ¿Se gestionan proveedores bajo criterios definidos?" value="Sí, con evaluación" required> Sí, con evaluación</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 12: ¿Se gestionan proveedores bajo criterios definidos?" value="Parcialmente"> Parcialmente</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 12: ¿Se gestionan proveedores bajo criterios definidos?" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="pregunta-card">
+                    <span class="pregunta-titulo">13. ¿Se documentan y atienden incidentes, no conformidades o fallas?*</span>
+                    <div class="opciones-group">
+                        <label class="opcion-item"><input type="radio" name="Pregunta 13: ¿Se documentan y atienden incidentes, no conformidades o fallas?" value="Sí, con análisis de causa" required> Sí, con análisis de causa</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 13: ¿Se documentan y atienden incidentes, no conformidades o fallas?" value="Parcialmente"> Parcialmente</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 13: ¿Se documentan y atienden incidentes, no conformidades o fallas?" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="pregunta-card">
+                    <span class="pregunta-titulo">14. ¿La alta dirección participa activamente en el sistema de gestión?*</span>
+                    <div class="opciones-group">
+                        <label class="opcion-item"><input type="radio" name="Pregunta 14: ¿La alta dirección participa activamente en el sistema de gestión?" value="Sí, de forma constante" required> Sí, de forma constante</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 14: ¿La alta dirección participa activamente en el sistema de gestión?" value="Ocasionalmente"> Ocasionalmente</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 14: ¿La alta dirección participa activamente en el sistema de gestión?" value="No"> No</label>
+                    </div>
+                </div>
+
+                <div class="pregunta-card">
+                    <span class="pregunta-titulo">15. ¿Tu organización utiliza herramientas digitales para gestionar procesos y riesgos?*</span>
+                    <div class="opciones-group">
+                        <label class="opcion-item"><input type="radio" name="Pregunta 15: ¿Tu organización utiliza herramientas digitales para gestionar procesos y riesgos?" value="Sí, de forma integrada" required> Sí, de forma integrada</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 15: ¿Tu organización utiliza herramientas digitales para gestionar procesos y riesgos?" value="Parcialmente"> Parcialmente</label>
+                        <label class="opcion-item"><input type="radio" name="Pregunta 15: ¿Tu organización utiliza herramientas digitales para gestionar procesos y riesgos?" value="No"> No</label>
+                    </div>
+                </div>
+            </div>
+
+            <div class="centrar-boton-contenedor" style="margin-bottom: 5rem;">
+                <input type="submit" value="Obtener mi Evaluación" class="boton boton--primario" style="min-width: 25rem;" data-fs-submit-btn>
+            </div>
+        </form>
+    </main>
+
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="barra">
+                <a class="logo" href="index.html">
+                    <h1 class="logo__nombre no-margin centrar-texto">Scal <span class="logo__bold">IA</span></h1>
+                </a>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+        formspree('initForm', { 
+            formElement: '#cuestionario-evaluacion', 
+            formId: 'mbdbnyzv' 
+        });
+    </script>
+    <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
+
+</body>
+</html>

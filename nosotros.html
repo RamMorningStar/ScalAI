@@ -1,0 +1,258 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blog - Scal IA</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans&family=PT+Sans:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Estilos específicos para los artículos desplegables */
+        .blog-articulo {
+            margin-bottom: 2rem;
+            border: 1px solid #e1e1e1;
+            border-radius: 1rem;
+            overflow: hidden;
+            background-color: #fff;
+            transition: all 0.3s ease;
+        }
+
+        .blog-articulo[open] {
+            box-shadow: 0px 10px 20px rgba(0,0,0,0.1);
+        }
+
+        summary {
+            padding: 2rem;
+            cursor: pointer;
+            font-family: 'PT Sans', sans-serif;
+            font-size: 2.2rem;
+            font-weight: 700;
+            list-style: none; /* Quita la flecha por defecto */
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            outline: none;
+        }
+
+        summary::after {
+            content: '+';
+            font-size: 3rem;
+            color: #784ba0; /* Color distintivo */
+        }
+
+        .blog-articulo[open] summary::after {
+            content: '-';
+        }
+
+        .contenido-articulo {
+            padding: 0 2rem 2rem 2rem;
+            line-height: 1.8;
+            animation: slideDown 0.4s ease-out;
+        }
+
+        @keyframes slideDown {
+            from { opacity: 0; transform: translateY(-10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .cta-evaluacion {
+            background-color: #f4f4f4;
+            padding: 1.5rem;
+            border-left: 5px solid #784ba0;
+            margin-top: 2rem;
+        }
+
+        .btn-diagnostico {
+            display: inline-block;
+            background-color: #000;
+            color: #fff;
+            padding: 1rem 2rem;
+            text-decoration: none;
+            margin-top: 1rem;
+            border-radius: 0.5rem;
+        }
+        
+        strong { color: #333; }
+    </style>
+</head>
+<body>
+
+    <header class="header">
+        <div class="contenedor">
+            <div class="barra">
+                <a class="logo" href="index.html">
+                    <h1 class="logo__nombre no-margin centrar-texto">Scal <span class="logo__bold">IA</span></h1>
+                </a>
+
+                <nav class="navegacion">
+                    <a href="nosotros.html" class="navegacion__enlace">Blog</a>
+                    <a href="cursos.html" class="navegacion__enlace">Metodología</a>
+                    <a href="entrada.html" class="navegacion__enlace">Nuestros Servicios</a>
+                    <a href="contacto.html" class="navegacion__enlace">Contacto</a>
+                    <a href="diagnostico.html" class="navegacion__enlace">Diagnóstico</a>
+                </nav>
+            </div>
+        </div>
+
+        <div class="header__texto">
+            <h2 class="no-margin">Estrategias y Actualidad en Sistemas de Gestión</h2>
+            <p class="no-margin">Aprende sobre normas ISO, eficiencia operativa y mejora continua</p>
+        </div>
+    </header>
+
+    <main class="contenedor">
+        <h3 class="centrar-texto">Nuestro Blog</h3>
+
+        <details class="blog-articulo">
+            <summary>La importancia de contar con un sistema de gestión en tu empresa</summary>
+            <div class="contenido-articulo">
+                <p>En un entorno empresarial cada vez más competitivo, dinámico y regulado, las organizaciones necesitan mucho más que buenas intenciones para crecer de forma sostenible. Requieren orden, claridad y control. Aquí es donde un sistema de gestión se convierte en un elemento clave para el éxito.</p>
+                
+                <p>Un sistema de gestión no es solo un conjunto de documentos o procedimientos; es la forma en la que una empresa organiza, controla y mejora sus operaciones para cumplir sus objetivos estratégicos.</p>
+
+                <strong>1. Da estructura y claridad a la operación</strong>
+                <p>Uno de los principales beneficios de implementar un sistema de gestión es que permite definir claramente cómo funciona la empresa. Se establecen procesos, responsabilidades y reglas de operación que reducen la improvisación.</p>
+                <p>Esto se traduce en:</p>
+                <ul>
+                    <li>Menos errores operativos</li>
+                    <li>Mayor eficiencia</li>
+                    <li>Mejor coordinación entre áreas</li>
+                </ul>
+                <p>Cuando todos saben qué hacer, cómo hacerlo y con qué propósito, la organización fluye mejor.</p>
+
+                <strong>2. Permite gestionar y reducir riesgos</strong>
+                <p>Toda empresa enfrenta riesgos: operativos, financieros, legales, reputacionales, entre otros. Un sistema de gestión ayuda a identificarlos, analizarlos y establecer controles para mitigarlos.</p>
+                <p>Esto no solo evita problemas, sino que también:</p>
+                <ul>
+                    <li>Reduce pérdidas</li>
+                    <li>Previene incumplimientos</li>
+                    <li>Mejora la toma de decisiones</li>
+                </ul>
+                <p>Gestionar riesgos de forma proactiva es una ventaja competitiva.</p>
+
+                <strong>3. Impulsa la mejora continua</strong>
+                <p>Un sistema de gestión bien implementado no es estático. Está diseñado para evolucionar constantemente mediante la medición de resultados, auditorías y análisis de desempeño.</p>
+                <p>Esto permite:</p>
+                <ul>
+                    <li>Detectar áreas de oportunidad</li>
+                    <li>Optimizar procesos</li>
+                    <li>Adaptarse a cambios del entorno</li>
+                </ul>
+                <p>Las empresas que mejoran continuamente son las que logran mantenerse vigentes y crecer.</p>
+
+                <strong>4. Fortalece la toma de decisiones</strong>
+                <p>Contar con indicadores, datos confiables y procesos definidos permite a la dirección tomar decisiones más informadas y estratégicas. En lugar de reaccionar ante problemas, la empresa puede anticiparse y actuar con base en evidencia.</p>
+
+                <strong>5. Mejora la confianza de clientes y aliados</strong>
+                <p>Las organizaciones que operan bajo sistemas de gestión transmiten mayor profesionalismo y confiabilidad. Esto es especialmente relevante cuando se busca atraer nuevos clientes, participar en licitaciones o cumplir con estándares o certificaciones (como ISO).</p>
+                <p>Un sistema de gestión bien estructurado se convierte en una carta de presentación.</p>
+
+                <strong>6. Facilita el cumplimiento normativo</strong>
+                <p>Las regulaciones son cada vez más exigentes. Un sistema de gestión ayuda a asegurar que la empresa cumpla con requisitos legales y normativos aplicables, evitando sanciones y riesgos legales.</p>
+
+                <strong>Conclusión</strong>
+                <p>Implementar un sistema de gestión no es un lujo, es una necesidad para cualquier empresa que quiera crecer de forma ordenada, rentable y sostenible. Más allá de cumplir con estándares, se trata de construir una organización sólida, capaz de adaptarse, mejorar y competir en un entorno cada vez más exigente.</p>
+                <p>Si tu empresa aún no cuenta con un sistema de gestión o lo tiene de forma parcial, este es el momento ideal para dar el siguiente paso y fortalecer tus bases.</p>
+
+                <div class="cta-evaluacion">
+                    <p>¿Te gustaría saber qué tan maduro es tu sistema de gestión?</p>
+                    <p>Realiza nuestra evaluación rápida y recibe un diagnóstico con recomendaciones prácticas para llevar tu empresa al siguiente nivel.</p>
+                    <a href="contacto.html" class="btn-diagnostico">Realizar evaluación gratuita</a>
+                </div>
+            </div>
+        </details>
+
+        <details class="blog-articulo">
+            <summary>La nueva ISO 9001: una evolución clave para la gestión de la calidad</summary>
+            <div class="contenido-articulo">
+                <p>La norma ISO 9001 es, sin duda, uno de los estándares más reconocidos a nivel mundial para la gestión de la calidad. Durante años, ha ayudado a miles de organizaciones a estructurar sus procesos, mejorar su desempeño y aumentar la satisfacción de sus clientes.</p>
+                <p>Sin embargo, el entorno empresarial ha cambiado: mayor digitalización, nuevos riesgos, expectativas más altas de los clientes y un enfoque creciente en la resiliencia organizacional. Por ello, la próxima actualización de ISO 9001 representa una evolución importante que las empresas no pueden ignorar.</p>
+
+                <strong>¿Por qué se actualiza ISO 9001?</strong>
+                <p>Las normas ISO se revisan periódicamente para mantenerse relevantes. La nueva versión de ISO 9001 busca adaptarse a los retos actuales y futuros de las organizaciones, incorporando elementos que fortalezcan su capacidad de respuesta ante cambios y su sostenibilidad en el tiempo. No se trata de empezar desde cero, sino de evolucionar el sistema de gestión hacia un enfoque más estratégico y dinámico.</p>
+
+                <strong>Principales enfoques de la nueva ISO 9001</strong>
+                <p>Aunque la estructura base se mantiene, se espera que la nueva versión refuerce aspectos clave como:</p>
+                <ol>
+                    <li><strong>Mayor enfoque en la gestión de riesgos y oportunidades:</strong> Las organizaciones deberán integrar de forma más profunda el pensamiento basado en riesgos en todos sus procesos.</li>
+                    <li><strong>Integración con la transformación digital:</strong> El uso de tecnologías, automatización y gestión de la información cobrará mayor relevancia.</li>
+                    <li><strong>Énfasis en la experiencia del cliente:</strong> Se busca entender y gestionar la experiencia completa del cliente.</li>
+                    <li><strong>Cultura organizacional y liderazgo:</strong> La alta dirección tendrá un rol aún más activo en la promoción de la calidad y la ética.</li>
+                    <li><strong>Sostenibilidad y resiliencia:</strong> Capacidad para adaptarse a cambios, gestionar crisis y operar de forma sostenible.</li>
+                </ol>
+
+                <strong>¿Qué implica esto para las empresas?</strong>
+                <p>La nueva ISO 9001 no solo será una actualización técnica, sino un cambio de mentalidad. Las empresas deberán revisar procesos, fortalecer análisis de riesgos, integrar herramientas digitales e involucrar más a la alta dirección.</p>
+
+                <strong>Beneficios de adaptarse a tiempo</strong>
+                <ul>
+                    <li>Mejorar su eficiencia operativa</li>
+                    <li>Incrementar la satisfacción del cliente</li>
+                    <li>Reducir riesgos y errores</li>
+                    <li>Fortalecer su reputación</li>
+                </ul>
+
+                <strong>Conclusión</strong>
+                <p>La nueva ISO 9001 representa una oportunidad para evolucionar el sistema de gestión de calidad hacia un modelo más moderno, estratégico y alineado con los desafíos actuales. Prepararse desde ahora posicionará a tu organización como una empresa sólida, competitiva y orientada al futuro.</p>
+
+                <div class="cta-evaluacion">
+                    <p>¿Tu sistema de calidad está listo para la nueva ISO 9001?</p>
+                    <p>Realiza nuestra evaluación rápida y descubre qué tan preparado está tu sistema para esta nueva etapa.</p>
+                    <a href="contacto.html" class="btn-diagnostico">Descubre tu nivel de preparación</a>
+                </div>
+            </div>
+        </details>
+
+        <details class="blog-articulo">
+            <summary>ISO 9001 en México: tendencia creciente y retos actuales</summary>
+            <div class="contenido-articulo">
+                <p>En México, la adopción de sistemas de gestión basados en ISO 9001 sigue en crecimiento, impulsada por la necesidad de las empresas de ser más competitivas y responder a un entorno exigente. Hoy, la calidad ya no es solo un diferenciador: es un requisito para operar.</p>
+
+                <strong>México se prepara para la nueva ISO 9001:2026</strong>
+                <p>México ya forma parte activa en la transición hacia la nueva versión. Se han realizado foros y sesiones informativas dirigidas a responsables de sistemas de gestión para anticipar el impacto de esta actualización. Esto refleja que el tema no es futuro, es presente.</p>
+
+                <strong>¿Qué está cambiando en el contexto empresarial mexicano?</strong>
+                <ul>
+                    <li>Mayor competencia global</li>
+                    <li>Presión por cumplir regulaciones</li>
+                    <li>Exigencias de clientes más informados</li>
+                    <li>Necesidad de digitalización e integración de criterios ESG</li>
+                </ul>
+
+                <strong>Sectores donde ISO 9001 ya es clave en México</strong>
+                <p>La certificación ya es ampliamente utilizada en: Manufactura y automotriz, Logística, Construcción, Servicios, Retail y el Sector público.</p>
+
+                <strong>La nueva ISO: una oportunidad para las empresas mexicanas</strong>
+                <p>Se espera que incluya mayor enfoque en cambio climático, transformación digital, cultura organizacional y gestión del conocimiento. Para las empresas mexicanas, esto representa una oportunidad de profesionalizar su operación.</p>
+
+                <strong>El reto real: pasar de “cumplir” a “gestionar”</strong>
+                <p>El verdadero valor está en usar el sistema para tomar mejores decisiones, reducir errores y crecer de forma ordenada. Las empresas que logran este cambio de mentalidad obtienen ventajas competitivas reales.</p>
+
+                <strong>Conclusión</strong>
+                <p>México está en un momento clave. Las empresas que se anticipen y profesionalicen su gestión estarán mejor preparadas para competir a nivel nacional e internacional.</p>
+
+                <div class="cta-evaluacion">
+                    <p>¿Tu empresa está lista para lo que viene en México?</p>
+                    <p>Realiza nuestra evaluación rápida y descubre qué tan preparado está tu sistema de gestión frente a las nuevas exigencias del mercado.</p>
+                    <a href="contacto.html" class="btn-diagnostico">Recibir diagnóstico inicial</a>
+                </div>
+            </div>
+        </details>
+
+    </main>
+
+    <footer class="footer">
+        <div class="contenedor">
+            <div class="barra">
+                <a class="logo" href="index.html">
+                    <h1 class="logo__nombre no-margin centrar-texto">Scal <span class="logo__bold">IA</span></h1>
+                </a>
+          
+            </div>
+        </div>
+    </footer>
+    
+    <script src="js/modernizr.js"></script>
+</body>
+</html>
